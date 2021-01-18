@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React ,{Component} from "react";
+import Prop from "./components/Prop"
+class App extends Component{
+  state={
+    age:" ",
+    check:" "
+  };
+ageCheck =()=>{
+  const check=this.state.check
+  this.setState({check:this.state.age >=18 ? (<div className="green" >{this.state.age}</div>) :(<div className="red" >{this.state.age}</div>)})
+ this.setState({age:" "})
+  
 }
+
+  render(){
+    
+    return <div>
+      
+      <input onChange={(e)=>{this.setState({age: e.target.value})}}value={this.state.age}></input>
+      <button onClick={()=>{
+        
+    
+        this.ageCheck()
+        }} >check</button>
+      <Prop check={this.state.check}></Prop>
+      
+      
+    </div>
+  }
+}
+
 
 export default App;
